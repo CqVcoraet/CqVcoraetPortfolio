@@ -80,6 +80,27 @@ function template(currentPage) {
     var valuesButton = createMenuButton("Values", false);
     var contactButton = createMenuButton("Contact", true);
 
+    // Menu Button Event Listeners
+    homeButton.addEventListener("click", function() {
+        window.location.href = "Home.html";
+    });
+
+    aboutButton.addEventListener("click", function() {
+        window.location.href = "About.html";
+    });
+
+    projectsButton.addEventListener("click", function() {
+        window.location.href = "Projects.html";
+    });
+
+    valuesButton.addEventListener("click", function() {
+        window.location.href = "Values.html";
+    });
+
+    contactButton.addEventListener("click", function() {
+        window.location.href = "Contact.html";
+    });
+
     // Logo - Must be on right hand side of the menu bar
     var logo = document.createElement("img");
     logo.src = "Images/Java Cup.png"; // Path to your logo image
