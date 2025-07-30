@@ -30,7 +30,7 @@ function template(currentPage) {
     menuBar.style.transform = "translate(-50%, 0)";
     menuBar.style.width = menuBarWidth + "px";
     menuBar.style.height = menuBarHeight + "px";
-    menuBar.style.backgroundColor = "#1f1f1fff";
+    menuBar.style.backgroundColor = "#232323ff";
     menuBar.style.display = "flex";
     menuBar.style.justifyContent = "left";
     menuBar.style.alignItems = "center";
