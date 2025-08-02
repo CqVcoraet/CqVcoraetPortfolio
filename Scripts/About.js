@@ -23,8 +23,8 @@ document.body.appendChild(title);
 var titleUnderline = document.createElement("div");
 titleUnderline.style.position = "absolute";
 titleUnderline.style.top = menuBarHeight + 210 + "px"; // 60px below the title
-titleUnderline.style.left = (menuBarWidth / 2) + 380 + "px"; // Center horizontally
-titleUnderline.style.transform = "translateX(-600px)"; // Adjust for half of the content width
+titleUnderline.style.left = "44.5%"; // Center horizontally
+titleUnderline.style.transform = "translateX(-50%)"; // Adjust for half of the content width
 titleUnderline.style.width = "1000px"; // Width of the underline
 titleUnderline.style.height = "0.25px"; // Height of the underline
 titleUnderline.style.backgroundColor = "#FFFFFF"; // Color of the underline

@@ -2,6 +2,14 @@ function template(currentPage) {
     // Vars
     var menuBarWidth = 1200; // Width of the menu bar
     var menuBarHeight = 160; // Height of the menu bar
+    var darkMode = true; // Dark mode enabled by default
+    var textColor = ""
+
+    if (darkMode) {
+        textColor = "#FFFFFF"; // White text for dark mode
+    } else {
+        textColor = "#000000"; // Black text for light mode
+    }
 
     // Background
     var bg = document.createElement("div");
@@ -46,7 +54,7 @@ function template(currentPage) {
         // button.style.top = yPos + "px";
         button.style.width = "80px";
         button.style.height = "40px";
-        button.style.color = "#FFFFFF";
+        button.style.color = textColor;
         button.style.backgroundColor = "transparent";
         button.style.fontFamily = "Inter, sans-serif";
         button.style.fontSize = "18px";
@@ -64,7 +72,7 @@ function template(currentPage) {
         if (pageName == currentPage) {
             button.style.color = "#05DBFC";
         } else {
-            button.style.color = "#FFFFFF";
+            button.style.color = textColor; // Default text color
         }
 
         // Append button to the menu bar
@@ -77,8 +85,10 @@ function template(currentPage) {
     var homeButton = createMenuButton("Home", false);
     var aboutButton = createMenuButton("About", false);
     var projectsButton = createMenuButton("Projects", false);
+    var skillsButton = createMenuButton("Skills", false);
     var valuesButton = createMenuButton("Values", false);
-    var contactButton = createMenuButton("Contact", true);
+    var contactButton = createMenuButton("Contact", false);
+    var toggleDarkModeButton = createMenuButton("ToggleDark", true);
 
     // Menu Button Event Listeners
     homeButton.addEventListener("click", function() {
@@ -93,6 +103,10 @@ function template(currentPage) {
         window.location.href = "Projects.html";
     });
 
+    skillsButton.addEventListener("click", function() {
+        window.location.href = "Skills.html";
+    });
+
     valuesButton.addEventListener("click", function() {
         window.location.href = "Values.html";
     });
@@ -100,6 +114,43 @@ function template(currentPage) {
     contactButton.addEventListener("click", function() {
         window.location.href = "Contact.html";
     });
+
+    // Add event listener for dark mode toggle
+    toggleDarkModeButton.addEventListener("click", function() {
+    darkMode = !darkMode; // Toggle the value
+
+        if (darkMode) {
+            bg.style.backgroundColor = "#141414";
+            menuBar.style.backgroundColor = "#232323ff";
+            textColor = "#FFFFFF";
+        } else {
+            bg.style.backgroundColor = "#EBEBEB";
+            menuBar.style.backgroundColor = "#DCDCDCFF";
+            textColor = "#000000";
+        }
+
+        // Update all menu button text colors
+        var buttons = menuBar.querySelectorAll("button");
+        buttons.forEach(function(btn) {
+            // Highlight current page, otherwise use textColor
+            if (btn.innerHTML.toLowerCase() === currentPage.toLowerCase()) {
+                btn.style.color = "#05DBFC";
+            } else {
+                btn.style.color = textColor;
+            }
+
+
+        });
+
+        // Optionally, update other text elements on the page
+        // Example: update all divs that use textColor
+        var textDivs = document.querySelectorAll("div");
+        textDivs.forEach(function(div) {
+            if (div.style.color) {
+                div.style.color = textColor;
+            }
+        });
+});
 
     // Logo - Must be on right hand side of the menu bar
     var logo = document.createElement("img");
@@ -116,6 +167,8 @@ function template(currentPage) {
     return {
         bg: bg,
         menuBarHeight: menuBarHeight,
-        menuBarWidth: menuBarWidth
+        menuBarWidth: menuBarWidth,
+        darkMode: darkMode,
+        textColor: textColor,
     };
 }

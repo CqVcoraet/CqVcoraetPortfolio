@@ -1,5 +1,5 @@
 // Template
-var projectsTemplate = template("Projects");
+var projectsTemplate = template("Skills");
 var menuBarHeight = projectsTemplate.menuBarHeight; // Width of the menu bar
 var menuBarWidth = projectsTemplate.menuBarWidth; // Height of the menu bar
 
@@ -16,7 +16,7 @@ title.style.padding = "0 20px";
 title.style.textAlign = "left"; // Align text to the left
 title.style.fontSize = "65px";
 title.style.fontWeight = "bold";
-title.innerHTML = "Projects";
+title.innerHTML = "Skills";
 document.body.appendChild(title);
 
 // Title Underline
