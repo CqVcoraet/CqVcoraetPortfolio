@@ -2,6 +2,7 @@
 var valuesTemplate = template("Values");
 var menuBarHeight = valuesTemplate.menuBarHeight; // Width of the menu bar
 var menuBarWidth = valuesTemplate.menuBarWidth; // Height of the menu bar
+var textColor = valuesTemplate.textColor; // Text color based on dark mode
 
 // Vars
 var lines;
@@ -19,7 +20,7 @@ title.style.top = menuBarHeight + 100 + "px"; // 100px below the menu bar
 title.style.justifyContent = "left";
 title.style.left = "50%"; // Center horizontally
 title.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-title.style.color = "#FFFFFF";
+title.style.color = textColor;
 title.style.fontFamily = "Inter, sans-serif";
 title.style.padding = "0 20px";
 title.style.textAlign = "left"; // Align text to the left
@@ -36,7 +37,7 @@ titleUnderline.style.left = "44.5%"; // Center horizontally
 titleUnderline.style.transform = "translateX(-50%)"; // Adjust for half of the content width
 titleUnderline.style.width = "1000px"; // Width of the underline
 titleUnderline.style.height = "0.25px"; // Height of the underline
-titleUnderline.style.backgroundColor = "#FFFFFF"; // Color of the underline
+titleUnderline.style.backgroundColor = textColor; // Color of the underline
 titleUnderline.style.zIndex = "1"; // Ensure it appears above other elements
 document.body.appendChild(titleUnderline);
 
@@ -46,7 +47,7 @@ valueTitle1.style.position = "absolute";
 valueTitle1.style.top = menuBarHeight + 260 + "px"; // 100px below the underline
 valueTitle1.style.left = "50%"; // Center horizontally
 valueTitle1.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-valueTitle1.style.color = "#FFFFFF";
+valueTitle1.style.color = textColor;
 valueTitle1.style.fontFamily = "Inter, sans-serif";
 valueTitle1.style.padding = "0 20px";
 valueTitle1.style.textAlign = "left"; // Align text to the left
@@ -61,7 +62,7 @@ valueDescription1.style.position = "absolute";
 valueDescription1.style.top = menuBarHeight + 310 + "px"; // 50px below the value title
 valueDescription1.style.left = "50%"; // Center horizontally
 valueDescription1.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-valueDescription1.style.color = "#FFFFFF";
+valueDescription1.style.color = textColor;
 valueDescription1.style.fontFamily = "Inter, sans-serif";
 valueDescription1.style.padding = "0 20px";
 valueDescription1.style.textAlign = "left"; // Align text to the left
@@ -79,7 +80,7 @@ valueTitle2.style.position = "absolute";
 valueTitle2.style.top = menuBarHeight + calculateSpacing(6, 2) + "px"; // 90px below the first value description
 valueTitle2.style.left = "50%"; // Center horizontally
 valueTitle2.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-valueTitle2.style.color = "#FFFFFF";
+valueTitle2.style.color = textColor;
 valueTitle2.style.fontFamily = "Inter, sans-serif";
 valueTitle2.style.padding = "0 20px";
 valueTitle2.style.textAlign = "left"; // Align text to the left
@@ -94,7 +95,7 @@ valueDescription2.style.position = "absolute";
 valueDescription2.style.top = menuBarHeight + 620 + "px"; // 50px below the second value title
 valueDescription2.style.left = "50%"; // Center horizontally
 valueDescription2.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-valueDescription2.style.color = "#FFFFFF";
+valueDescription2.style.color = textColor;
 valueDescription2.style.fontFamily = "Inter, sans-serif";
 valueDescription2.style.padding = "0 20px";
 valueDescription2.style.textAlign = "left"; // Align text to the left
@@ -113,7 +114,7 @@ valueTitle3.style.position = "absolute";
 valueTitle3.style.top = menuBarHeight + calculateSpacing(9, 3) + "px"; // 90px below the second value description
 valueTitle3.style.left = "50%"; // Center horizontally
 valueTitle3.style.transform = "translateX(-600px)"; // Adjust for half of the content width
-valueTitle3.style.color = "#FFFFFF";
+valueTitle3.style.color = textColor;
 valueTitle3.style.fontFamily = "Inter, sans-serif";
 valueTitle3.style.padding = "0 20px";
 valueTitle3.style.textAlign = "left"; // Align text to the left
@@ -121,3 +122,22 @@ valueTitle3.style.fontSize = "40px";
 valueTitle3.style.fontWeight = "bold";
 valueTitle3.innerHTML = "Value #3: Flow Over Force";
 document.body.appendChild(valueTitle3);
+
+// Value #3 Description
+var valueDescription3 = document.createElement("div");
+valueDescription3.style.position = "absolute";
+valueDescription3.style.top = menuBarHeight + calculateSpacing(9,3) + 50 + "px"; // 50px below the third value title
+valueDescription3.style.left = "50%"; // Center horizontally
+valueDescription3.style.transform = "translateX(-600px)"; // Adjust for half of the content width
+valueDescription3.style.color = textColor;
+valueDescription3.style.fontFamily = "Inter, sans-serif";
+valueDescription3.style.padding = "0 20px";
+valueDescription3.style.textAlign = "left"; // Align text to the left
+valueDescription3.style.fontSize = "20px";
+valueDescription3.style.lineHeight = "1.5"; // Line height for better readability
+valueDescription3.style.width = "1000px"; // Width of the description
+valueDescription3.style.fontWeight = "normal";
+valueDescription3.innerHTML = `I believe that flow is much more important than force because force doesn't work long term and burns you out. Flow on the other hand makes you more engaged and happy in the long run. A flow state is one of the most productive states you can be in.
+This is because when you surrender control and overthinking while doing something and simply live in the present moment, you allow the divine to flow through you and you end up doing the task so much better with far less stress. In a flow state you are not working against your mind.
+In fact trying to control your mind makes it resist more. It will be more controllable when you surrender the need to control it but also stop feeding its impulses. Then it will burn out and listen to you. A flow state does just that.`;
+document.body.appendChild(valueDescription3);
