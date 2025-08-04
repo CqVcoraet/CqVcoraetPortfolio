@@ -63,6 +63,7 @@ function template(currentPage) {
         } else {
             button.style.backgroundColor = "#FFC900"; // No background color for menu buttons
             button.style.width = "150px"; // Wider for non-page buttons
+            button.style.foregroundColor = "#000000"; // Black text for non-page buttons
         }
 
         button.style.fontFamily = "Inter, sans-serif";
