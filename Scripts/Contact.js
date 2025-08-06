@@ -3,6 +3,7 @@ var contactTemplate = template("Contact");
 var menuBarHeight = contactTemplate.menuBarHeight; // Width of the menu bar
 var menuBarWidth = contactTemplate.menuBarWidth; // Height of the menu bar
 var textColor = contactTemplate.textColor; // Text color based on dark mode
+var contactSystemSetup = false; // Flag to indicate if the contact system is set up
 
 // Title
 var title = document.createElement("div");
@@ -108,8 +109,8 @@ submitButton.style.left = "50%"; // Center horizontally
 submitButton.style.transform = "translateX(-600px)"; // Adjust for half of the content width
 submitButton.style.width = "200px"; // Width of the button
 submitButton.style.height = "60px"; // Height of the button
-submitButton.style.color = "black" // Text color
-submitButton.style.backgroundColor = "#FFC900"; // Background color for the button
+submitButton.style.color = "white" // Text color
+submitButton.style.backgroundColor = "#03468F"; // Background color for the button
 submitButton.style.fontFamily = "Inter, sans-serif";
 submitButton.style.fontSize = "20px";
 submitButton.style.fontWeight = "bold"; // Bold text
@@ -119,12 +120,29 @@ submitButton.style.cursor = "pointer"; // Pointer cursor on hover
 submitButton.style.outline = "none"; // Remove default outline
 submitButton.style.boxSizing = "border-box"; // Include padding and border in element's total width and height
 submitButton.onclick = function() {
-    showCustomAlert("The contact system is currently not setup yet. Please check later.");
+    if (!contactSystemSetup) {
+        warnAlert("The contact system is not set up yet. Please try again later.");
+        return;
+    } else {
+        successAlert("Your message has been sent successfully! We will get back to you soon.");
+    }
+    
+    // var email = emailField.value.trim();
+    // var topic = topicField.value.trim();
+    // var message = messageArea.value.trim();
+
+    // if (!email || !topic || !message) {
+    //     errorAlert("Please fill in all fields before submitting.");
+    //     return;
+    // }
+
+    // // Simulate sending the message
+    // successAlert("Your message has been sent successfully! We will get back to you soon.");
 }
 document.body.appendChild(submitButton);
 
 // Add this function to your JS file
-function showCustomAlert(message) {
+function warnAlert(message) {
     // Create overlay
     var overlay = document.createElement("div");
     overlay.style.position = "fixed";
@@ -142,6 +160,9 @@ function showCustomAlert(message) {
     alertBox.style.left = "50%";
     alertBox.style.transform = "translate(-50%, -50%)";
     alertBox.style.background = "#FFC900";
+    alertBox.style.display = "flex";
+    alertBox.style.flexDirection = "column";
+    alertBox.style.alignItems = "center";
     alertBox.style.color = "#000000";
     alertBox.style.padding = "32px 48px";
     alertBox.style.borderRadius = "20px";
@@ -171,3 +192,105 @@ function showCustomAlert(message) {
     overlay.appendChild(alertBox);
     document.body.appendChild(overlay);
 }
+
+function errorAlert(message) {
+    // Create overlay
+    var overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100vw";
+    overlay.style.height = "100vh";
+    overlay.style.background = "rgba(0,0,0,0.5)";
+    overlay.style.zIndex = "9999";
+    
+    // Create alert box
+    var alertBox = document.createElement("div");
+    alertBox.style.position = "absolute";
+    alertBox.style.top = "50%";
+    alertBox.style.left = "50%";
+    alertBox.style.transform = "translate(-50%, -50%)";
+    alertBox.style.background = "#D20000"; // Error color
+    alertBox.style.color = "#FFFFFF"; // White text
+    alertBox.style.padding = "32px 48px";
+    alertBox.style.borderRadius = "20px";
+    alertBox.style.fontFamily = "Inter, sans-serif";
+    alertBox.style.fontSize = "22px";
+    alertBox.style.boxShadow = "0 4px 24px rgba(0,0,0,0.2)";
+    alertBox.innerHTML = message;
+
+    // Center content
+    alertBox.style.display = "flex";
+    alertBox.style.flexDirection = "column";
+    alertBox.style.alignItems = "center";
+
+    // Close button
+    var closeBtn = document.createElement("button");
+    closeBtn.innerHTML = "OK";
+    closeBtn.style.marginTop = "24px";
+    closeBtn.style.padding = "8px 24px";
+    closeBtn.style.fontSize = "18px";
+    closeBtn.style.border = "none";
+    closeBtn.style.borderRadius = "12px";
+    closeBtn.style.background = "#FFFFFF"; // White button
+    closeBtn.style.color = "#D20000"; // Error color text
+    closeBtn.style.cursor = "pointer";
+    closeBtn.onclick = function() {
+        document.body.removeChild(overlay);
+    };
+
+    alertBox.appendChild(document.createElement("br"));
+    alertBox.appendChild(closeBtn);
+    overlay.appendChild(alertBox);
+    document.body.appendChild(overlay);
+}
+
+ function successAlert(message) {
+    // Create overlay
+    var overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100vw";
+    overlay.style.height = "100vh";
+    overlay.style.background = "rgba(0,0,0,0.5)";
+    overlay.style.zIndex = "9999";
+    
+    // Create alert box
+    var alertBox = document.createElement("div");
+    alertBox.style.position = "absolute";
+    alertBox.style.top = "50%";
+    alertBox.style.left = "50%";
+    alertBox.style.transform = "translate(-50%, -50%)";
+    alertBox.style.background = "#007722"; // Success color
+    alertBox.style.color = "#FFFFFF"; // White text
+    alertBox.style.padding = "32px 48px";
+    alertBox.style.borderRadius = "20px";
+    alertBox.style.fontFamily = "Inter, sans-serif";
+    alertBox.style.fontSize = "22px";
+    alertBox.style.boxShadow = "0 4px 24px rgba(0,0,0,0.2)";
+    alertBox.style.display = "flex";
+    alertBox.style.flexDirection = "column";
+    alertBox.style.alignItems = "center";
+    alertBox.innerHTML = message;
+
+    // Close button
+    var closeBtn = document.createElement("button");
+    closeBtn.innerHTML = "OK";
+    closeBtn.style.marginTop = "24px";
+    closeBtn.style.padding = "8px 24px";
+    closeBtn.style.fontSize = "18px";
+    closeBtn.style.border = "none";
+    closeBtn.style.borderRadius = "12px";
+    closeBtn.style.background = "#FFFFFF"; // White button
+    closeBtn.style.color = "#007722"; // Success color text
+    closeBtn.style.cursor = "pointer";
+    closeBtn.onclick = function() {
+        document.body.removeChild(overlay);
+    };
+
+    alertBox.appendChild(document.createElement("br"));
+    alertBox.appendChild(closeBtn);
+    overlay.appendChild(alertBox);
+    document.body.appendChild(overlay);
+ }
