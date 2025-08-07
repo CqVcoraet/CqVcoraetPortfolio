@@ -120,19 +120,29 @@ submitButton.style.cursor = "pointer"; // Pointer cursor on hover
 submitButton.style.outline = "none"; // Remove default outline
 submitButton.style.boxSizing = "border-box"; // Include padding and border in element's total width and height
 submitButton.onclick = function() {
-    if (!contactSystemSetup) {
-        warnAlert("The contact system is not set up yet. Please try again later.");
+    var email = emailField.value.trim();
+    var topic = topicField.value.trim();
+    var message = messageArea.value.trim();
+
+    // Check if email is valid
+    if (!emailField.checkValidity()) {
+        errorAlert("Please enter a valid email address.");
+        return;
+    }
+    
+    if (!email || !topic || !message) {
+        errorAlert("Please fill in all fields before submitting.");
         return;
     } else {
-        var email = emailField.value.trim();
-        var topic = topicField.value.trim();
-        var message = messageArea.value.trim();
-        if (!email || !topic || !message) {
-            errorAlert("Please fill in all fields before submitting.");
+        if (!contactSystemSetup) {
+            warnAlert("The contact system is not set up yet. Please try again later.");
             return;
+        } else {
+            successAlert("Your message has been sent successfully! We will get back to you soon.");
         }
-        successAlert("Your message has been sent successfully! We will get back to you soon.");
     }
+        
+    
 }
 document.body.appendChild(submitButton);
 
