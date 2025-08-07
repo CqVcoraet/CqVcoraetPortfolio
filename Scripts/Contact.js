@@ -124,20 +124,15 @@ submitButton.onclick = function() {
         warnAlert("The contact system is not set up yet. Please try again later.");
         return;
     } else {
+        var email = emailField.value.trim();
+        var topic = topicField.value.trim();
+        var message = messageArea.value.trim();
+        if (!email || !topic || !message) {
+            errorAlert("Please fill in all fields before submitting.");
+            return;
+        }
         successAlert("Your message has been sent successfully! We will get back to you soon.");
     }
-    
-    // var email = emailField.value.trim();
-    // var topic = topicField.value.trim();
-    // var message = messageArea.value.trim();
-
-    // if (!email || !topic || !message) {
-    //     errorAlert("Please fill in all fields before submitting.");
-    //     return;
-    // }
-
-    // // Simulate sending the message
-    // successAlert("Your message has been sent successfully! We will get back to you soon.");
 }
 document.body.appendChild(submitButton);
 
